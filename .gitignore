@@ -27,3 +27,11 @@ arp-scan
 # IEEE OUI and IAB backup files
 ieee-iab.txt.bak
 ieee-oui.txt.bak
+
+#CMakeFiles
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+#Binaries
+arp-scan
