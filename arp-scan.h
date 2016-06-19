@@ -28,104 +28,38 @@
 #include "config.h"
 #endif
 
-#ifdef STDC_HEADERS
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdarg.h>
 #include <errno.h>
-#else
-#error This program requires the ANSI C Headers
-#endif
-
 #include <sys/types.h>
-
-/* Integer types */
-#ifdef HAVE_INTTYPES_H
 #include <inttypes.h>
-#else
-#ifdef HAVE_STDINT_H
 #include <stdint.h>
-#endif
-#endif
-
-#ifdef __CYGWIN__
-#include <windows.h>	/* Include windows.h if compiling under Cygwin */
-#endif
-
-#ifdef HAVE_UNISTD_H
 #include <unistd.h>
-#endif
-
-#ifdef HAVE_NETDB_H
 #include <netdb.h>
-#endif
-
-#ifdef HAVE_GETOPT_H
-#include <getopt.h>
-#else
-/* Include getopt.h for the sake of getopt_long.
-   We don't need the declaration of getopt, and it could conflict
-   with something from a system header file, so effectively nullify that.  */
-#define getopt getopt_loser
-#include "getopt.h"
-#undef getopt
-#endif
-
-#ifdef HAVE_NETINET_IN_H
 #include <netinet/in.h>
-#endif
-
-#ifdef TIME_WITH_SYS_TIME
-# include <sys/time.h>
-# include <time.h>
-#else
-# ifdef HAVE_SYS_TIME_H
-#  include <sys/time.h>
-# else
-#  include <time.h>
-# endif
-#endif
-
-#ifdef HAVE_SYS_SOCKET_H
+#include <sys/time.h>
+#include <time.h>
 #include <sys/socket.h>
-#endif
-
-#ifdef HAVE_ARPA_INET_H
 #include <arpa/inet.h>
-#endif
-
-#ifdef HAVE_REGEX_H
-#include <regex.h>		/* Posix regular expression functions */
-#endif
-
-#ifdef HAVE_SYS_STAT_H
+#include <regex.h>
 #include <sys/stat.h>
-#endif
-
-#ifdef HAVE_FCNTL_H
 #include <fcntl.h>
-#endif
-
-#ifdef HAVE_PCAP_H
 #include <pcap.h>
-#endif
-
-#ifdef HAVE_SYS_IOCTL_H
 #include <sys/ioctl.h>
-#endif
 
-#ifdef ARP_PCAP_DLPI
-#ifdef HAVE_SYS_BUFMOD_H
-#include <sys/bufmod.h>
-#endif
-#endif
+#include "getopt.h"
+#include "hash.h"
 
-#include "hash.h"		/* Hash table functions */
+/* Definitions at compile time */
+#define DATADIR "/etc/arp-scan"
+#define PACKAGE_STRING "arp-scan"
+#define PACKAGE_BUGREPORT "bugreport"
+#define ATTRIBUTE_UNUSED
 
 /* Defines */
-
 #define MAXLINE 255			/* Max line length for input files */
 #define MAX_FRAME 2048			/* Maximum allowed frame size */
 #define REALLOC_COUNT 1000		/* Entries to realloc at once */
